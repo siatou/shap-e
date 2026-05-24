@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belook — Logo HTML/CSS</title>
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="belook-logo.css" />
+
+  <style>
+    /* Demo page styles only — not required to use the logo */
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f6f7f9;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: #111;
+      font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+      font-weight: 500;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 32px 96px;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 40px;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      margin-bottom: 48px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      padding: 40px 24px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+    }
+
+    .card.dark {
+      background: #0D0D0D;
+      border-color: #0D0D0D;
+    }
+
+    .card.dark .belook-logo {
+      --belook-black: #ffffff;
+    }
+
+    .label {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .snippet {
+      background: #0D0D0D;
+      color: #e7e7e7;
+      padding: 24px;
+      border-radius: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+
+    .snippet .tag   { color: #79c0ff; }
+    .snippet .attr  { color: #ffa657; }
+    .snippet .str   { color: #a5d6ff; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Belook — Logo en HTML / CSS</h1>
+
+    <!-- The logo itself: a single tag -->
+    <section class="hero">
+      <span class="belook-logo" style="font-size: clamp(72px, 14vw, 220px);">belook</span>
+    </section>
+
+    <!-- Size variations using helper classes -->
+    <section class="grid">
+      <div class="row">
+        <div class="card"><span class="belook-logo belook-logo--sm">belook</span></div>
+        <div class="label">.belook-logo--sm (48px)</div>
+      </div>
+      <div class="row">
+        <div class="card"><span class="belook-logo belook-logo--md">belook</span></div>
+        <div class="label">.belook-logo--md (96px)</div>
+      </div>
+      <div class="row">
+        <div class="card"><span class="belook-logo belook-logo--lg">belook</span></div>
+        <div class="label">.belook-logo--lg (160px)</div>
+      </div>
+      <div class="row">
+        <div class="card dark"><span class="belook-logo belook-logo--md">belook</span></div>
+        <div class="label">Sur fond sombre</div>
+      </div>
+    </section>
+
+    <!-- Usage example -->
+    <section>
+      <h1>Utilisation</h1>
+      <pre class="snippet"><span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">href</span>=<span class="str">"belook-logo.css"</span><span class="tag">&gt;</span>
+
+<span class="tag">&lt;span</span> <span class="attr">class</span>=<span class="str">"belook-logo"</span><span class="tag">&gt;</span>belook<span class="tag">&lt;/span&gt;</span></pre>
+    </section>
+  </main>
+</body>
+</html>

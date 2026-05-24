@@ -1,6 +1,8 @@
 /* ============================================================
    Belook Logo — pure HTML/CSS implementation
-   Usage:  <span class="belook-logo">belook</span>
+   Usage:  <span class="belook-logo" aria-label="belook">beloo</span>
+           (the final "k" is rendered by the ::after pseudo-element
+            so it can be drawn bicolored without any alignment issue)
    Font  : Satoshi (Bold 700)
    ============================================================ */
 
@@ -39,28 +41,22 @@
 }
 
 /*
-   The final letter "k" has two colors:
-   - the stem and the lower diagonal stay black (text content underneath)
-   - the upper diagonal is green (overlay drawn via ::after with a
-     diagonal background-clip:text gradient, perfectly aligned on top
-     of the underlying "k" thanks to position:absolute; right:0; top:0)
+   The final letter "k" has two colors. We render it via ::after
+   instead of putting it in the text node — this lets us paint a
+   single glyph with a diagonal black/green split (background-clip:text
+   gradient) and avoids any overlay/alignment artefacts.
+   The HTML therefore contains "beloo", and ::after appends "k".
 */
 .belook-logo::after {
   content: "k";
-  position: absolute;
-  right: 0;
-  top: 0;
   font: inherit;
-  letter-spacing: 0;
-  pointer-events: none;
+  letter-spacing: inherit;
 
-  /* Diagonal split: lower-left transparent (lets the black k show through),
-     upper-right opaque green (paints the upper diagonal of the k).      */
   background: linear-gradient(
-    62deg,
-    transparent 0%,
-    transparent 50%,
-    var(--belook-green) 50%,
+    58deg,
+    var(--belook-black) 0%,
+    var(--belook-black) 60%,
+    var(--belook-green) 60%,
     var(--belook-green) 100%
   );
   -webkit-background-clip: text;

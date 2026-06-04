@@ -1,0 +1,72 @@
+/* ============================================================
+   Belook Logo — pure HTML/CSS implementation
+   Usage:  <span class="belook-logo" aria-label="belook">beloo</span>
+           (the final "k" is rendered by the ::after pseudo-element
+            so it can be drawn bicolored without any alignment issue)
+   Font  : Satoshi (Bold 700)
+   ============================================================ */
+
+/* Import Satoshi from Fontshare (free, official distribution) */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap');
+
+.belook-logo {
+  /* Brand colors */
+  --belook-green: #15A648;
+  --belook-black: #0D0D0D;
+
+  /* Typography */
+  font-family: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 1em;          /* inherits / scalable via parent or inline style */
+  line-height: 1;
+  letter-spacing: -0.045em; /* tight tracking like the original */
+  color: var(--belook-black);
+
+  /* Layout */
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  user-select: none;
+
+  /* Rendering quality */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+/* The first letter "b" is fully green */
+.belook-logo::first-letter {
+  color: var(--belook-green);
+}
+
+/*
+   The final letter "k" has two colors. We render it via ::after
+   instead of putting it in the text node — this lets us paint a
+   single glyph with a diagonal black/green split (background-clip:text
+   gradient) and avoids any overlay/alignment artefacts.
+   The HTML therefore contains "beloo", and ::after appends "k".
+*/
+.belook-logo::after {
+  content: "k";
+  font: inherit;
+  letter-spacing: inherit;
+
+  background: linear-gradient(
+    58deg,
+    var(--belook-black) 0%,
+    var(--belook-black) 60%,
+    var(--belook-green) 60%,
+    var(--belook-green) 100%
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+/* Optional size helpers — purely convenience */
+.belook-logo--sm { font-size: 48px; }
+.belook-logo--md { font-size: 96px; }
+.belook-logo--lg { font-size: 160px; }
+.belook-logo--xl { font-size: 220px; }
